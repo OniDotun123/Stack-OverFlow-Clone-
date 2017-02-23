@@ -4,6 +4,7 @@ get '/questions' do
 end
 
 get '/questions/new' do
+  require_login
   erb :'/questions/new'
 end
 
@@ -34,6 +35,7 @@ put '/questions/:id' do
 end
 
 delete '/questions/:id' do
+  require_login
   @question = Question.find_by(id: params[:id])
   @question.destroy
   redirect '/questions'

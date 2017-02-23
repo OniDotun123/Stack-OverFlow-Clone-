@@ -26,3 +26,8 @@ post '/login' do
       erb :'/users/login'
     end
 end
+
+get '/logout' do
+session.clear
+ redirect '/questions'
+end
