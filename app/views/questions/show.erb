@@ -2,6 +2,7 @@
   <h2>Title: <%= @question.title%></h2>
 
     <p> <%= @question.content%> </p>
+    <p>Posted by: <%=@author.username%></p>
 
     <br>
     <%if login?%>

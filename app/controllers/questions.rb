@@ -20,6 +20,7 @@ end
 
 get '/questions/:id' do
   @question = Question.find_by(id: params[:id])
+  @author = User.find(@question.user_id)
   erb :'/questions/show'
 end
 
