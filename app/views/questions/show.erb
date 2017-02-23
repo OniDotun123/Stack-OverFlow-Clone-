@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Title: <%= @question.title%></h2>
+
+    <p> <%= @question.content%> </p>
+    <p>Posted by: <%=@author.username%></p>
+
+    <br>
+    <%if login?%>
+    <a href="/questions/<%=@question.id%>/edit">Edit This Question</a><br><br>
+    <a href="/questions">Return to Home Page</a>
+    <%else%>
+    <a href="/questions">Return to Home Page</a>
+    <%end%>
+</div>
