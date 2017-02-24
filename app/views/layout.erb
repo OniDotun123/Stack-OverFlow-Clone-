@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
   <link rel="stylesheet" href="/css/application.css">
 
-  
+
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
@@ -22,10 +22,13 @@
   <title>DBC FLow</title>
   <nav>
     <%if login?%>
+      <%= current_user.username%> |
       <a href="/questions">Home</a>
+      |
       <a href="/logout">Logout</a>
     <%else%>
-      <a href="/users/new">Create  A Profile </a><br><br>
+      <a href="/users/new">Create  A Profile</a>
+      |
       <a href="/users/login">Login</a>
     <%end%>
   </nav>
