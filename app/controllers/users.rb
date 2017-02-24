@@ -6,7 +6,7 @@ post '/users' do
   @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id #logic that signs user in
-      binding.pry
+
       redirect '/questions'
     else
       erb :'/users/new'
@@ -21,7 +21,8 @@ post '/login' do
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      erb :'/users/show'
+      # erb :'/users/show'
+      redirect '/questions'
     else
       erb :'/users/login'
     end
