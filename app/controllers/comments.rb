@@ -14,11 +14,6 @@ post '/answers/:answer_id/comments' do
   erb :'answers/comments/new'
 end
 
-
-
-
-
-
 get '/questions/:question_id/comments/new' do
   @question = Question.find_by(id: params[:question_id])
 

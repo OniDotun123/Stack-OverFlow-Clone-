@@ -18,8 +18,10 @@ post '/questions' do
   end
 end
 
+
+
 get '/questions/:id' do
-  @question = Question.find_by(id: params[:id])
+  @question = this_question(params[:id])
   @author = User.find(@question.user_id)
   @answers = @question.answers
   @question_comments = @question.comments
@@ -28,7 +30,7 @@ end
 
 
 get '/questions/:id/edit' do
-  @question = Question.find_by(id: params[:id])
+  @question = this_question(params[:id])
   erb :'/questions/edit'
 end
 
