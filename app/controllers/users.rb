@@ -28,6 +28,6 @@ post '/login' do
 end
 
 get '/logout' do
-session.clear
+  session.clear
  redirect '/questions'
 end

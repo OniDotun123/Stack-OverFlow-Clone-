@@ -9,7 +9,10 @@
     <br>
     <%if login?%>
     <a href="/questions/<%= @question.id%>/content/new">Answer this question</a><br>
-    <a href="/comments/new">Make a comment</a><br>
+    <form action="/questions/<%= @question.id %>/comments/new" method="get">
+      <input type="hidden" name="question_id" value="<%= @question.id %>">
+      <input type="submit"value="Make a comment">
+    </form>
     <%if authorized?(@question)  %>
     <a href="/questions/<%=@question.id%>/edit">Edit This Question</a><br><br>
     <%end%>
