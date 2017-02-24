@@ -6,9 +6,20 @@
 
     <br>
     <%if login?%>
+    <a href="/question/<%= @question.id%>/content/new">Answer this question</a><br><br>
     <a href="/questions/<%=@question.id%>/edit">Edit This Question</a><br><br>
     <a href="/questions">Return to Home Page</a>
     <%else%>
     <a href="/questions">Return to Home Page</a>
     <%end%>
+</div>
+
+
+<div class="container">
+  <h2>Here are some of the Answers.</h2>
+  <% @answers.each do |answer| %>
+  <ul>
+    <li><%=answer.content%></li>
+  </ul>
+  <%end%>
 </div>
