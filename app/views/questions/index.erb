@@ -1,6 +1,10 @@
+<div class="container">
+
 <h1> Questions </h1>
 
 <ul>
+  <h4><a href="/questions/new"> Post a new question</a></h4>
+  <hr>
 <%@questions.each do |question|%>
     <li><a href="/questions/<%=question.id%>"><%=question.title%></a></li>
     <% if authorized?(question)%>
@@ -9,6 +13,7 @@
       <input type="submit" value="Delete Post">
     </form>
     <%end%>
+    <hr>
   <%end%>
 </ul>
-<a href="/questions/new"> Post a new question</a>
+</div>
