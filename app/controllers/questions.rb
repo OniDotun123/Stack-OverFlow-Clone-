@@ -9,7 +9,7 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  @question = Question.new(params[:question])
+  @question = this_question(params[:id])
   @question.update_attributes(user_id: session[:user_id]) #assigns user id to question.
   if @question.save
     redirect '/questions'

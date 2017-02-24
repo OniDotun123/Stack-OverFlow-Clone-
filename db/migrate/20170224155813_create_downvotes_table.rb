@@ -1,6 +1,7 @@
 class CreateDownvotesTable < ActiveRecord::Migration
   def change
     create_table :downvotes do |t|
+      t.integer :user_id
       t.integer :value, :default => 0
       t.references :downvotable, polymorphic: true, index: true
 

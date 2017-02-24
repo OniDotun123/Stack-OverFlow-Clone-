@@ -20,3 +20,11 @@ end
 def this_question(id)
   Question.find_by(id: id)
 end
+
+def downvoted?
+  !!Downvote.find_by(user_id: current_user.id)
+end
+
+def voted?
+  !!Vote.find_by(user_id: current_user.id)
+end
