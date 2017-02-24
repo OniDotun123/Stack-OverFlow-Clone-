@@ -16,3 +16,7 @@ end
 def authorized?(class_name)
   current_user == class_name.author
 end
+
+def this_question(id)
+  Question.find_by(id: id)
+end

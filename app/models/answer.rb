@@ -5,6 +5,10 @@ class Answer < ActiveRecord::Base
   has_many :downvotes, as: :downvotable
 
   belongs_to :author, class_name: User, foreign_key: :user_id
-  
+
   validates :content, presence: true
+
+  def vote_count
+    total = self.votes.count - self.downvotes.count
+  end
 end
