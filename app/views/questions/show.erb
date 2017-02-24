@@ -1,23 +1,24 @@
 <div class="container">
   <h2>Title: <%= @question.title %></h2>
-  <p>Votes : <%= @question.vote_count %></p>
+
     <p> <%= @question.content %> </p>
+    <h4>Votes: <%= @question.vote_count %></p></h4>
     <p>Posted by: <%= @author.username %></p>
     <%if login?%>
-    <a href="/upvote/questions/<%= @question.id %>">up vote</a>
+    <a href="/upvote/questions/<%= @question.id %>">up vote</a> |
     <a href="/downvote/questions/<%= @question.id %>">down vote</a>
     <% end %>
-    <p> Comments : </p>
+
   <% @question_comments.each do |comment| %>
-    <p> <%= comment.content %> </p><em> By: <%=comment.author.username%></em>
+   <p> Comments:  <%= comment.content %> </p><em> By: <%=comment.author.username%></em><br>
     <%if login?%>
-      <a href="/upvote/<%= @question.id %>/comments/<%= comment.id %>">up vote</a>
+      <a href="/upvote/<%= @question.id %>/comments/<%= comment.id %>">up vote</a> |
       <a href="/downvote/<%= @question.id %>/comments/<%= comment.id %>">down vote</a>
     <% end %>
     <% end %>
     <br>
     <%if login?%>
-  <p>_____________________________________________________________________</p>
+  <hr>
     <h5><a href="/questions/<%= @question.id%>/content/new">Answer this question</a></h5>
     <form action="/questions/<%= @question.id %>/comments/new" method="get">
       <input type="hidden" name="question_id" value="<%= @question.id %>">
@@ -37,19 +38,21 @@
   <h2>Here are all of the Answers.</h2>
 
   <% @answers.each do |answer| %>
+  <hr>
     <ul>
       <li><%=answer.content%></li>
-      <p>Votes: <%= answer.vote_count %></p>
-      <em>by: <%= answer.author.username %></em>
+      <em>Answer posted by: <%= answer.author.username %></em><br>
         <%if login?%>
-          <a href="/upvote/<%= @question.id %>/answers/<%= answer.id %>">up vote</a>
-          <a href="/downvote/<%= @question.id %>/answers/<%= answer.id %>">down vote</a>
+          <a href="/upvote/<%= @question.id %>/answers/<%= answer.id %>">up vote</a> |
+          <a href="/downvote/<%= @question.id %>/answers/<%= answer.id %>">down vote</a><br><br>
+          <h4>Votes: <%= answer.vote_count %></h4>
         <% end %>
       <% answer.comments.each do |comment| %>
         <p> <%= comment.content %> </p>
         <p>Votes: <%= comment.vote_count %></p>
 
         <em>by: <em><%=comment.author.username%></em></em>
+
         <%if login?%>
         <a href="/upvote/<%= @question.id %>/comments/<%= comment.id %>">up vote</a>
         <a href="/downvote/<%= @question.id %>/comments/<%= comment.id %>">down vote</a>
@@ -60,6 +63,7 @@
         <input type="hidden" name="question_id" value="<%= @question.id %>">
         <input type="submit"value="Make a comment">
       </form>
+
     <% end %>
     <%if authorized?(answer) %>
       <a href="/questions/<%=@question.id%>/content/<%=answer.id%>/edit">Edit Your answer</a>
