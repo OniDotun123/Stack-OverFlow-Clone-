@@ -3,10 +3,12 @@
 <ul>
 <%@questions.each do |question|%>
     <li><a href="/questions/<%=question.id%>"><%=question.title%></a></li>
+    <% if authorized?(question)%>
     <form action="/questions/<%=question.id%>" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete Post">
     </form>
+    <%end%>
   <%end%>
 </ul>
 <a href="/questions/new"> Post a new question</a>

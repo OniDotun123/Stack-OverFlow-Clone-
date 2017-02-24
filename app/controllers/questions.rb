@@ -21,8 +21,11 @@ end
 get '/questions/:id' do
   @question = Question.find_by(id: params[:id])
   @author = User.find(@question.user_id)
+  @answers = @question.answers
+  @question_comments = @question.comments
   erb :'/questions/show'
 end
+
 
 get '/questions/:id/edit' do
   @question = Question.find_by(id: params[:id])

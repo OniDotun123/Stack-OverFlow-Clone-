@@ -1,0 +1,7 @@
+<div class="container">
+  <form  action='/questions/<%=@question.id%>/content' method="post">
+    <h2> <%= @question.title %></h2>
+    <textarea name="question[content]" rows="8" cols="50" placeholder="Let's hear your answer....."></textarea>
+    <input type="Submit" name="Submit">
+  </form>
+</div>

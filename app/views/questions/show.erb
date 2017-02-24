@@ -1,14 +1,43 @@
 <div class="container">
   <h2>Title: <%= @question.title%></h2>
-
     <p> <%= @question.content%> </p>
     <p>Posted by: <%=@author.username%></p>
-
+    <p> Comments : </p>
+  <% @question_comments.each do |comment| %>
+    <p> <%= comment.content %> </p><em><%=comment.author.username%></em>
+    <% end %>
     <br>
     <%if login?%>
+    <a href="/questions/<%= @question.id%>/content/new">Answer this question</a><br>
+    <a href="/comments/new">Make a comment</a><br>
+    <%if authorized?(@question)  %>
     <a href="/questions/<%=@question.id%>/edit">Edit This Question</a><br><br>
+    <%end%>
     <a href="/questions">Return to Home Page</a>
     <%else%>
     <a href="/questions">Return to Home Page</a>
     <%end%>
+</div>
+
+
+<div class="container">
+  <h2>Here are all of the Answers.</h2>
+  <% @answers.each do |answer| %>
+    <ul>
+      <li><%=answer.content%></li>
+      <% answer.comments.each do |comment| %>
+        <p> <%= comment.content %> </p>
+        <li><h3>Posted by:</h3> <em><%=comment.author.username%></em></li>
+      <% end %>
+    <%if login?%>
+      <form action="/answers/<%= answer.id %>/comments/new" method="get">
+        <input type="hidden" name="question_id" value="<%= @question.id %>">
+        <input type="submit"value="Make a comment">
+      </form>
+    <% end %>
+    <%if authorized?(answer) %>
+      <a href="/questions/<%=@question.id%>/content/<%=answer.id%>/edit">Edit Your answer</a>
+      <%end%>
+    </ul>
+  <%end%>
 </div>

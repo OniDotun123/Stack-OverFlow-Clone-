@@ -1,0 +1,8 @@
+<div class="container">
+  <form  action='/questions/<%=@question.id%>/content/<%= @answer.id%>/edit' method="post">
+    <input type="hidden" name="_method" value="put">
+    <h2> <%= @question.title %></h2>
+    <textarea name="content" rows="8" cols="50" placeholder="Edit your Response......"></textarea>
+    <input type="Submit" name="Edit">
+  </form>
+</div>

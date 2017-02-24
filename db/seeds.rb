@@ -33,6 +33,7 @@ User.create!({
 
     Comment.create!({
          :content=> Faker::Lorem.sentence,
+         :user_id => rand(1..10),
          :commentable_id => question.id,
          :commentable_type => question.class
          })
